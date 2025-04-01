@@ -34,7 +34,7 @@ const Button = ({
 
         dark: `bg-zinc-700 hover:bg-zinc-700/90 text-white disabled:opacity-50`,
 
-        light: `bg-zinc-200 hover:bg-zinc-300/90 text-zinc-800 disabled:opacity-50`,
+        light: `bg-zinc-100 hover:bg-zinc-200/90 text-zinc-800 disabled:opacity-50`,
     };
 
     const outlineStyles = {
@@ -42,7 +42,7 @@ const Button = ({
 
         dark: `ring ring-zinc-700 hover:ring-0 text-zinc-800 hover:bg-zinc-700 hover:text-white`,
 
-        light: `ring ring-zinc-300 hover:ring-0 text-zinc-800 hover:bg-zinc-100`,
+        light: `ring ring-zinc-200 hover:ring-0 text-zinc-800 hover:bg-zinc-100`,
     };
 
     const buttonType = outlined

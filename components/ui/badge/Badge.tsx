@@ -28,7 +28,7 @@ const Badge = ({ className, children, badgeType = "info" }: Props) => {
             break;
 
         case "light":
-            badgeColorClass = "bg-zinc-200 text-zinc-700";
+            badgeColorClass = "bg-zinc-100 text-zinc-800";
             break;
 
         case "dark":
@@ -37,14 +37,7 @@ const Badge = ({ className, children, badgeType = "info" }: Props) => {
     }
 
     return (
-        <div
-            className={cn(
-                `inline-flex items-center justify-center gap-2
-                text-xs font-semibold transition-colors rounded-md border-none px-2 py-1 
-                focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 
-            ${badgeColorClass}`,
-                className
-            )}>
+        <div className={cn(`drd-badge ${badgeColorClass}`, className)}>
             {children}
         </div>
     );

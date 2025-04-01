@@ -71,3 +71,72 @@ body {
     scroll-behavior: smooth;
     scroll-padding-top: 60px;
 }
+
+@layer components {
+    /* ========================= */
+    /* 🔹 Badge */
+    /* ========================= */
+
+    .drd-badge {
+        @apply inline-flex items-center justify-center gap-2 focus:outline-none
+        text-xs font-semibold transition-colors rounded-md border-none px-2 py-1;
+    }
+
+    /* ========================= */
+    /* 🔹 Inputs */
+    /* ========================= */
+
+    .drd-input {
+        @apply transition-colors 
+        text-drd-neutral-800 text-sm bg-transparent
+        placeholder:text-xs placeholder:text-drd-neutral-400
+        disabled:cursor-not-allowed disabled:opacity-50
+        outline rounded-md px-3 py-1 w-full h-9;
+    }
+
+    .drd-input-normal {
+        @apply outline-drd-neutral-400 
+        focus:outline-drd-primary-500 selection:bg-drd-primary-100;
+    }
+
+    .drd-input-error {
+        @apply outline-red-400 
+        focus:outline-red-600 selection:bg-red-200;
+    }
+
+    .drd-float-input {
+        @apply transition-colors
+        text-sm text-drd-neutral-800 bg-transparent
+        placeholder:text-transparent placeholder:text-xs
+        disabled:cursor-not-allowed disabled:opacity-50
+        outline rounded-md px-3 py-1 w-full h-9;
+    }
+
+    .drd-float-input-normal {
+        @apply outline-drd-neutral-400 
+        focus:outline-drd-primary selection:bg-drd-primary-100;
+    }
+
+    .drd-float-input-error {
+        @apply outline-red-400 
+        focus:outline-red-600 selection:bg-red-200;
+    }
+
+    .drd-textarea {
+        @apply transition-colors 
+        text-drd-neutral-800 text-sm bg-transparent
+        placeholder:text-xs placeholder:text-drd-neutral-400
+        disabled:cursor-not-allowed disabled:opacity-50
+        outline rounded-md p-2 w-full min-h-24;
+    }
+
+    .drd-textarea-normal {
+        @apply outline-drd-neutral-400
+        focus:outline-drd-primary-500 selection:bg-drd-primary-100;
+    }
+
+    .drd-textarea-error {
+        @apply outline-red-400 
+        focus:outline-red-600 selection:bg-red-200;
+    }
+}
