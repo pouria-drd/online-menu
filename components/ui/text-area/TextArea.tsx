@@ -29,29 +29,24 @@ const TextArea = (props: TextAreaProps) => {
                 {...textareaProps} // Spread the other props but exclude uniqueId
                 id={uniqueId} // Explicitly set the id to uniqueId
                 dir={dir} // Set the text direction of the textarea
-                className={cn(
-                    `peer drd-textarea
-                    ${error ? `drd-textarea-error` : `drd-textarea-normal`}`,
-                    className
-                )}
+                className={`peer drd-textarea
+                    ${error ? `drd-textarea-error` : `drd-textarea-normal`}`}
             />
 
             {label && (
                 <label
                     htmlFor={uniqueId}
-                    className={cn(
-                        `absolute -top-2 -translate-y-1/2 text-xs
-                        
-                        ${dir === "rtl" ? "text-right" : "text-left"}
+                    className={`absolute -top-3 -translate-y-1/2 text-xs 
+                    
+                    ${dir === "rtl" ? " right-0" : "left-0"}
 
-                        ${
-                            error
-                                ? `text-red-500`
-                                : `text-drd-neutral-500
-                                peer-focus:text-drd-primary-600
-                                peer-disabled:text-drd-neutral-400`
-                        }`
-                    )}>
+                    ${
+                        error
+                            ? `text-red-500`
+                            : `text-drd-neutral-500
+                            peer-focus:text-drd-primary-600
+                            peer-disabled:text-drd-neutral-400`
+                    }`}>
                     {label}
                 </label>
             )}

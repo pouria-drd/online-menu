@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme {
+    --breakpoint-xs: 475px;
+
     --font-peyda: var(--font-peyda);
     --font-iran-yekan-x: var(--font-iran-yekan-x);
 

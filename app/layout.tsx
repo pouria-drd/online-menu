@@ -96,7 +96,7 @@ function RootLayout({ children }: Readonly<RootLayoutProps>) {
     return (
         <html lang="fa-IR">
             <body
-                className={`${peyda.variable} ${iranYekanX.variable}
+                className={`${peyda.variable} ${iranYekanX.variable} ss02
                 ${geistSans.variable} ${geistMono.variable} antialiased`}>
                 {children}
             </body>
