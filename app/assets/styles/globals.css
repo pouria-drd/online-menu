@@ -98,7 +98,7 @@ body {
     }
 
     /* ========================= */
-    /* 🔹 Inputs */
+    /* 🔹 Input */
     /* ========================= */
 
     .drd-input {
@@ -119,6 +119,10 @@ body {
         focus:outline-red-600 selection:bg-red-200;
     }
 
+    /* ========================= */
+    /* 🔹 Float Label Input */
+    /* ========================= */
+
     .drd-float-input {
         @apply transition-colors
         text-sm text-drd-neutral-800 bg-transparent
@@ -136,6 +140,10 @@ body {
         @apply outline-red-400 
         focus:outline-red-600 selection:bg-red-200;
     }
+
+    /* ========================= */
+    /* 🔹 Text Area */
+    /* ========================= */
 
     .drd-textarea {
         @apply transition-colors 

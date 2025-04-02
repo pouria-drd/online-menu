@@ -9,16 +9,7 @@ const nextConfig: NextConfig = {
     basePath: basePath,
 
     images: {
-        remotePatterns: [
-            {
-                protocol: "https",
-                hostname: "127.0.0.1",
-            },
-            {
-                protocol: "https",
-                hostname: "localhost",
-            },
-        ],
+        remotePatterns: [],
     },
 };
 

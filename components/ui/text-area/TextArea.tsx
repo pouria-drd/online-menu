@@ -22,9 +22,12 @@ const TextArea = (props: TextAreaProps) => {
 
     return (
         <div
-            className={`flex flex-col gap-0.5 w-full relative ${
-                dir === "rtl" ? "text-right" : "text-left"
-            }`}>
+            className={cn(
+                `flex flex-col gap-0.5 w-full relative ${
+                    dir === "rtl" ? "text-right" : "text-left"
+                }`,
+                className
+            )}>
             <textarea
                 {...textareaProps} // Spread the other props but exclude uniqueId
                 id={uniqueId} // Explicitly set the id to uniqueId
