@@ -2,7 +2,9 @@ import { LoginForm } from "@/components/forms";
 
 function LoginPage() {
     return (
-        <div className="flex items-center justify-center min-h-dvh p-4">
+        <div
+            className="bg-gray-50 min-h-dvh p-4
+            flex items-center justify-center">
             <LoginForm />
         </div>
     );
