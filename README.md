@@ -32,6 +32,9 @@ Create a `.env` file in the root directory to configure environment variables. E
 ```env
 # Set the base path for the application
 NEXT_PUBLIC_BASE_PATH=""
+
+# Set the base API URL
+BASE_API_URL="http://127.0.0.1:8000"
 ```
 
 Ensure the `.env` file is added to `.gitignore` to keep sensitive information private.

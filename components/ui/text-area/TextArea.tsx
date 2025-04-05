@@ -54,11 +54,7 @@ const TextArea = (props: TextAreaProps) => {
                 </label>
             )}
 
-            {error && (
-                <span className={`text-[11px] text-red-500 mt-0.5`}>
-                    {error}
-                </span>
-            )}
+            {error && <span className={`error-message mt-0.5`}>{error}</span>}
         </div>
     );
 };

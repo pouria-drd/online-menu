@@ -82,6 +82,14 @@ body {
         backdrop-filter: blur(20px) saturate(150%);
         -webkit-backdrop-filter: blur(20px) saturate(150%);
     }
+
+    .success-message {
+        @apply text-drd-primary-600 text-[10px] sm:text-xs;
+    }
+
+    .error-message {
+        @apply text-red-500 text-[10px] sm:text-xs;
+    }
 }
 
 /* ---------------------------------------------------------------------- */

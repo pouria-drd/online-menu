@@ -77,9 +77,7 @@ const FloatLabelInput = ({
             )}
 
             {/* Error message */}
-            {error && (
-                <span className={`text-xs text-red-500 px-1`}>{error}</span>
-            )}
+            {error && <span className={`error-message px-1`}>{error}</span>}
         </div>
     );
 };
