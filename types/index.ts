@@ -30,9 +30,21 @@ type LoginData = {
 };
 
 type LoginResponseData = {
+    cct: string;
+    rft: string;
     message: string;
 };
 
 type LoginValidationErrors = Record<keyof LoginData, string[] | undefined>;
 
 type LoginResponse = BaseApiResponse<LoginResponseData, LoginValidationErrors>;
+
+// Session types
+// ------------------------------------------------------------------------------------
+
+type SessionResponseData = {
+    cct: string;
+    rft: string;
+};
+
+type SessionResponse = BaseApiResponse<SessionResponseData>;

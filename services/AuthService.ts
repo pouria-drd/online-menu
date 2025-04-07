@@ -1,6 +1,7 @@
 "use server";
 
 import BaseApiService from "./BaseApiService";
+import { setSession } from "@/actions/session";
 import { loginFormSchema } from "@/libs/validation";
 
 class AuthService extends BaseApiService {
@@ -38,9 +39,53 @@ class AuthService extends BaseApiService {
             const jsonResponse = await fetchResult.response.json();
 
             if (fetchResult.response.ok) {
+                setSession("accessToken", jsonResponse.cct);
+                setSession("refreshToken", jsonResponse.rft);
+
                 return {
                     success: true,
                     data: jsonResponse.message,
+                };
+            }
+
+            return {
+                success: false,
+                serverError: jsonResponse.message,
+                validationErrors:
+                    typeof jsonResponse === "object" ? jsonResponse : undefined,
+            };
+        }
+
+        return {
+            success: false,
+            serverError: fetchResult.apiError,
+        };
+    }
+
+    /**
+     * Refreshes the access token using the refresh token.
+     * @param refresh The refresh token
+     * @returns The refresh response or an error
+     */
+    async refreshSession(refresh: string): Promise<SessionResponse> {
+        const fetchResult = await this.fetchWithTimeout("/users/refresh/", {
+            method: "POST",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                refresh: refresh,
+            }),
+        });
+
+        if (fetchResult.response) {
+            const jsonResponse = await fetchResult.response.json();
+
+            if (fetchResult.response.ok) {
+                return {
+                    success: true,
+                    data: jsonResponse,
                 };
             }
 
