@@ -5,14 +5,14 @@ type IconProps = {
 // API types
 // ------------------------------------------------------------------------------------
 
-type BaseApiProps = {
+type BaseApiOptions = {
     delayMs?: number;
     timeout?: number;
 };
 
 type BaseApiResponse<T, U = Record<string, string[] | undefined>> = {
     data?: T;
-    success?: string;
+    success: boolean;
     serverError?: string;
     validationErrors?: U;
 };
@@ -27,6 +27,7 @@ type LoginData = {
 type LoginResponseData = {
     message: string;
 };
+
 type LoginValidationErrors = Record<keyof LoginData, string[] | undefined>;
 
 type LoginResponse = BaseApiResponse<LoginResponseData, LoginValidationErrors>;

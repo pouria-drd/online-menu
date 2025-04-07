@@ -16,7 +16,7 @@ const LoginForm = ({ className, ...props }: LoginFormProps) => {
     const searchParams = useSearchParams();
     const next = searchParams.get("next");
 
-    const [state, formAction] = useActionState(
+    const [state, formAction, isPending] = useActionState(
         (state: unknown, formData: FormData) =>
             handleLoginAction(state, formData),
 
@@ -28,6 +28,7 @@ const LoginForm = ({ className, ...props }: LoginFormProps) => {
 
         const response = await loginAction(state, formData, {
             timeout: 10000,
+            // delayMs: 4000,
             redirectUrl,
         });
 
@@ -94,7 +95,11 @@ const LoginForm = ({ className, ...props }: LoginFormProps) => {
                 }}
                 error={state?.validationErrors?.password}
             />
-            <Button type="submit" fullWidth btnType="primary">
+            <Button
+                type="submit"
+                fullWidth
+                btnType="primary"
+                isBusy={isPending}>
                 ورود
             </Button>
         </form>
