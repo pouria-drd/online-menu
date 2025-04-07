@@ -7,6 +7,7 @@ const BASE_API_URL: string | null = process.env.BASE_API_URL ?? null;
  * Constructs and returns the base API URL with the specified version.
  *
  * @returns The full base URL as a string if BASE_API_URL is set, otherwise null.
+ * @example "https://api.example.com/v1" or "https://api.example.com"
  */
 async function getBaseApiURL(): Promise<string | null> {
     // Log a warning and return null if BASE_API is not configured in environment variables.

@@ -2,7 +2,6 @@
 
 import BaseApiService from "./BaseApiService";
 import { loginFormSchema } from "@/libs/validation";
-import { getBaseApiUrl, handleCommonError } from "@/utils";
 
 class AuthService extends BaseApiService {
     /**
@@ -12,43 +11,36 @@ class AuthService extends BaseApiService {
      */
     async login(formData: FormData): Promise<LoginResponse> {
         // Validate form data
-        const result = loginFormSchema.safeParse(Object.fromEntries(formData));
-        if (!result.success) {
+        const validationResult = loginFormSchema.safeParse(
+            Object.fromEntries(formData)
+        );
+        if (!validationResult.success) {
             return {
                 success: false,
-                validationErrors: result.error.flatten()
+                validationErrors: validationResult.error.flatten()
                     .fieldErrors as LoginValidationErrors,
             };
         }
 
-        try {
-            // Fetch the API base URL
-            const apiUrl = await getBaseApiUrl();
+        const fetchResult = await this.fetchWithTimeout("/users/login/", {
+            method: "POST",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username: validationResult.data.username,
+                password: validationResult.data.password,
+            }),
+        });
 
-            if (!apiUrl) {
-                throw new Error("API URL is not set.");
-            }
+        if (fetchResult.response) {
+            const jsonResponse = await fetchResult.response.json();
 
-            const response = await this.fetchWithTimeout(
-                `${apiUrl}/users/login/`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        username: result.data.username,
-                        password: result.data.password,
-                    }),
-                }
-            );
-
-            const jsonResponse = await response.json();
-
-            if (response.ok) {
+            if (fetchResult.response.ok) {
                 return {
-                    data: jsonResponse.message,
                     success: true,
+                    data: jsonResponse.message,
                 };
             }
 
@@ -58,9 +50,12 @@ class AuthService extends BaseApiService {
                 validationErrors:
                     typeof jsonResponse === "object" ? jsonResponse : undefined,
             };
-        } catch (error: any) {
-            return handleCommonError(error);
         }
+
+        return {
+            success: false,
+            serverError: fetchResult.apiError,
+        };
     }
 }
 

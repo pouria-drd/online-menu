@@ -27,7 +27,7 @@ const LoginForm = ({ className, ...props }: LoginFormProps) => {
         const redirectUrl: string = next ?? "/dashboard";
 
         const response = await loginAction(state, formData, {
-            timeout: 10000,
+            timeoutMs: 10000,
             // delayMs: 4000,
             redirectUrl,
         });

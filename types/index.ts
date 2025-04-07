@@ -7,7 +7,12 @@ type IconProps = {
 
 type BaseApiOptions = {
     delayMs?: number;
-    timeout?: number;
+    timeoutMs?: number;
+};
+
+type BaseServiceResponse = {
+    apiError?: string;
+    response?: Response;
 };
 
 type BaseApiResponse<T, U = Record<string, string[] | undefined>> = {

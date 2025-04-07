@@ -14,10 +14,10 @@ async function loginAction(
     // Get delayMs from props
     const delayMs = props?.delayMs;
     // Get timeout from props
-    const timeout = props?.timeout;
+    const timeoutMs = props?.timeoutMs;
 
     // Instantiate AuthService
-    const authService = new AuthService({ delayMs, timeout });
+    const authService = new AuthService({ delayMs, timeoutMs });
 
     // Call the login method from AuthService
     const response = await authService.login(formData);
