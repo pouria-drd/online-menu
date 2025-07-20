@@ -8,7 +8,7 @@ const LogoutButton = () => {
     const handleLogout = async () => {
         await logoutAction();
         // Redirect to the login page after logging out.
-        redirect("/");
+        redirect("/auth/login");
     };
 
     return (

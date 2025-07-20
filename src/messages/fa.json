@@ -6,6 +6,23 @@
                 "titleTemplate": "پنل منو آنلاین",
                 "description": "پنل منو آنلاین یک پنل منو رایگان و متن باز است."
             }
+        },
+        "LoginPage": {
+            "layout": {
+                "title": "ورود",
+                "description": "ورود به حساب کاربری"
+            }
+        },
+        "RegisterPage": {
+            "layout": {
+                "title": "ثبت نام",
+                "description": "ثبت نام حساب جدید در OMP"
+            }
+        },
+        "NotFoundPage": {
+            "title": "خطا",
+            "description": "صفحه‌ای که دنبال آن هستید یافت نشد!",
+            "button": "بازگشت به صفحه اصلی"
         }
     },
     "Components": {

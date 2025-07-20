@@ -6,6 +6,23 @@
                 "titleTemplate": "OMP",
                 "description": "OMP is a free and open-source menu panel."
             }
+        },
+        "LoginPage": {
+            "layout": {
+                "title": "Login",
+                "description": "Login to your account"
+            }
+        },
+        "RegisterPage": {
+            "layout": {
+                "title": "Register",
+                "description": "Register new account in OMP"
+            }
+        },
+        "NotFoundPage": {
+            "title": "Error",
+            "description": "We can’t seem to find the page you are looking for!",
+            "button": "Back to Home Page"
         }
     },
     "Components": {

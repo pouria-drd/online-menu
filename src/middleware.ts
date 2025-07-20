@@ -2,7 +2,7 @@ import { getUserSession } from "@/features/user/actions";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
-    const redirectUrl = new URL("/", request.url);
+    const redirectUrl = new URL("/auth/login", request.url);
     redirectUrl.searchParams.set("next", request.url); // Preserve the original URL in the 'next' parameter
     try {
         const userSession: UserSession | null = await getUserSession();
