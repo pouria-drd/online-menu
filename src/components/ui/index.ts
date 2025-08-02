@@ -4,3 +4,4 @@ export * from "./input";
 export * from "./button";
 export * from "./sonner";
 export * from "./dropdown-menu";
+export { default as Loader } from "./loader";
