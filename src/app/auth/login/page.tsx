@@ -1,11 +1,11 @@
 import { LoginForm } from "@/features/auth/components";
 
 function LoginPage() {
-    return (
-        <div className="min-h-dvh flex items-center justify-center p-4">
-            <LoginForm />
-        </div>
-    );
+	return (
+		<main className="grow app-px flex flex-col items-center justify-center">
+			<LoginForm />
+		</main>
+	);
 }
 
 export default LoginPage;

@@ -37,7 +37,7 @@ interface Token {
 interface DeviceInfo {
 	ip_address: string;
 	user_agent: string;
-	device_type: string;
+	device_type: "Mobile" | "Tablet" | "PC" | "Bot" | "Unknown";
 	os: string;
 	os_version: string;
 	browser: string;

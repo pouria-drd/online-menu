@@ -1,5 +1,9 @@
 function RegisterPage() {
-    return <div>RegisterPage</div>;
+	return (
+		<main className="grow app-px flex flex-col items-center justify-center">
+			RegisterPage
+		</main>
+	);
 }
 
 export default RegisterPage;
