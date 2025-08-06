@@ -46,8 +46,9 @@
 		"LanguageSwitcher": {
 			"title": "Change Language"
 		},
-		"ThemeSwitch": {
-			"text": "Dark Mode"
+		"ThemeToggle": {
+			"DarkMode": "Dark Mode",
+			"LightMode": "Light Mode"
 		}
 	},
 	"Forms": {

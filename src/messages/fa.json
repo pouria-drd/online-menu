@@ -46,8 +46,9 @@
 		"LanguageSwitcher": {
 			"title": "تغییر زبان"
 		},
-		"ThemeSwitch": {
-			"text": "حالت تاریک"
+		"ThemeToggle": {
+			"DarkMode": "حالت تاریک",
+			"LightMode": "حالت روشن"
 		}
 	},
 	"Forms": {

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { FaLanguage } from "react-icons/fa";
+import { LanguagesIcon } from "lucide-react";
 import { cn, localeChangeAction } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
 import {
@@ -14,6 +14,7 @@ import {
 	DropdownMenuRadioItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
+	SidebarMenuButton,
 } from "@/components/ui";
 
 const LANGUAGES = [
@@ -22,10 +23,11 @@ const LANGUAGES = [
 ];
 
 interface Props {
+	sidebar?: boolean;
 	className?: string;
 }
 
-const LanguageSwitcher = ({ className }: Props) => {
+const LanguageSwitcher = ({ className, sidebar }: Props) => {
 	const router = useRouter();
 	const currentLocale = useLocale();
 	const t = useTranslations("Components.LanguageSwitcher");
@@ -39,16 +41,60 @@ const LanguageSwitcher = ({ className }: Props) => {
 		router.refresh(); // reloads page with new locale
 	};
 
+	if (!sidebar)
+		return (
+			<DropdownMenu dir={currentLocale === "fa" ? "rtl" : "ltr"}>
+				<DropdownMenuTrigger asChild className={cn("", className)}>
+					<Button
+						size={"sm"}
+						variant="outline"
+						className="cursor-pointer">
+						<LanguagesIcon />
+						{
+							LANGUAGES.find((l) => l.code === selectedLocale)
+								?.label
+						}
+					</Button>
+				</DropdownMenuTrigger>
+				{/* <DropdownMenuContent className={`${currentLocale === "fa" ? "r2l" : "l2r"} w-44`}> */}
+				<DropdownMenuContent className="w-44">
+					<DropdownMenuLabel className="text-center">
+						{t("title")}
+					</DropdownMenuLabel>
+					<DropdownMenuSeparator />
+					<DropdownMenuRadioGroup
+						value={selectedLocale}
+						onValueChange={handleLocaleChange}>
+						{LANGUAGES.map((lang) => (
+							<DropdownMenuRadioItem
+								className="cursor-pointer"
+								key={lang.code}
+								value={lang.code}>
+								<span
+									className={`${
+										lang.code === "fa"
+											? "font-iran-yekan-x"
+											: "font-sans"
+									}`}>
+									{lang.label}
+								</span>
+							</DropdownMenuRadioItem>
+						))}
+					</DropdownMenuRadioGroup>
+				</DropdownMenuContent>
+			</DropdownMenu>
+		);
+
 	return (
-		<DropdownMenu>
+		<DropdownMenu dir={currentLocale === "fa" ? "rtl" : "ltr"}>
 			<DropdownMenuTrigger asChild className={cn("", className)}>
-				<Button
-					variant="outline"
-					size={"sm"}
+				<SidebarMenuButton
+					size={"default"}
+					variant="default"
 					className="cursor-pointer">
-					<FaLanguage />
+					<LanguagesIcon />
 					{LANGUAGES.find((l) => l.code === selectedLocale)?.label}
-				</Button>
+				</SidebarMenuButton>
 			</DropdownMenuTrigger>
 			{/* <DropdownMenuContent className={`${currentLocale === "fa" ? "r2l" : "l2r"} w-44`}> */}
 			<DropdownMenuContent className="w-44">

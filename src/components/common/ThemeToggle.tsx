@@ -1,27 +1,53 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { Button } from "@/components/ui";
-import { FaMoon, FaSun } from "react-icons/fa";
+import { useTranslations } from "next-intl";
+import { MoonIcon, SunIcon } from "lucide-react";
+import { Button, SidebarMenuButton } from "@/components/ui";
 
-function ThemeToggle() {
-    const { theme, setTheme } = useTheme();
-
-    function toggleTheme() {
-        setTheme(theme === "dark" ? "light" : "dark");
-    }
-
-    return (
-        <Button
-            size={"sm"}
-            onClick={toggleTheme}
-            variant={"outline"}
-            className="rounded-full size-8 cursor-pointer">
-            <FaSun className="absolute rotate-90 scale-0 dark:rotate-0 dark:scale-100" />
-
-            <FaMoon className="absolute rotate-0 scale-100 dark:-rotate-90 dark:scale-0" />
-        </Button>
-    );
+interface ThemeToggleProps {
+	sidebar?: boolean;
+	size?: "sm" | "icon" | "default" | "lg";
 }
+
+const ThemeToggle = (props: ThemeToggleProps) => {
+	const { sidebar, size = "sm" } = props;
+	const { theme, setTheme } = useTheme();
+	const t = useTranslations("Components.ThemeToggle");
+
+	function toggleTheme() {
+		setTheme(theme === "dark" ? "light" : "dark");
+	}
+
+	if (!sidebar)
+		return (
+			<Button
+				size={size}
+				variant="outline"
+				id="theme-toggle"
+				name="theme-toggle"
+				onClick={toggleTheme}
+				className="rounded-full cursor-pointer aspect-square min-w-4">
+				{theme === "dark" ? (
+					<SunIcon className="w-full" />
+				) : (
+					<MoonIcon className="w-full" />
+				)}
+			</Button>
+		);
+
+	return (
+		<SidebarMenuButton onClick={toggleTheme}>
+			{theme === "dark" ? (
+				<SunIcon className="w-full" />
+			) : (
+				<MoonIcon className="w-full" />
+			)}
+			<label htmlFor="theme-toggle" className="cursor-pointer truncate">
+				{theme === "dark" ? t("LightMode") : t("DarkMode")}
+			</label>
+		</SidebarMenuButton>
+	);
+};
 
 export default ThemeToggle;
