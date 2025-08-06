@@ -28,11 +28,16 @@
 			"layout": {
 				"title": "پنل"
 			},
-
 			"DashboardPage": {
 				"layout": {
 					"title": "داشبورد",
 					"description": "داشبورد OMP"
+				}
+			},
+			"SettingsPage": {
+				"layout": {
+					"title": "تنظیمات",
+					"description": "تنظیمات منو آنلاین"
 				}
 			}
 		}

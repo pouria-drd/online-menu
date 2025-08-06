@@ -28,11 +28,16 @@
 			"layout": {
 				"title": "Panel"
 			},
-
 			"DashboardPage": {
 				"layout": {
 					"title": "Dashboard",
 					"description": "Dashboard for OMP"
+				}
+			},
+			"SettingsPage": {
+				"layout": {
+					"title": "Settings",
+					"description": "Settings for OMP"
 				}
 			}
 		}
