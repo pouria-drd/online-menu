@@ -3,8 +3,10 @@ import Image from "next/image";
 import { Button } from "@/components/ui";
 import { GridShape } from "@/components/common";
 import { getTranslations } from "next-intl/server";
+import { getUserSession } from "@/features/user/actions";
 
 async function NotFound() {
+	const session = await getUserSession();
 	const t = await getTranslations("Pages.NotFoundPage");
 
 	return (
@@ -34,7 +36,7 @@ async function NotFound() {
 					<p className="mt-10 mb-6 text-base  sm:text-lg">
 						{t("description")}
 					</p>
-					<Link href="/">
+					<Link href={session ? "/panel/dashboard" : "/"}>
 						<Button size={"lg"} variant={"outline"}>
 							{t("button")}
 						</Button>
