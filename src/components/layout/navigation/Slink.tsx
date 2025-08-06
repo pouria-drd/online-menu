@@ -14,7 +14,11 @@ const Slink = (props: SlinkProps) => {
 		<SidebarMenuItem>
 			<SidebarMenuButton
 				asChild
-				className={isActive ? "bg-sidebar-accent" : ""}>
+				className={
+					isActive
+						? "bg-sidebar-accent text-sidebar-accent-foreground"
+						: ""
+				}>
 				<Link href={url}>
 					{children}
 					<span>{title}</span>
