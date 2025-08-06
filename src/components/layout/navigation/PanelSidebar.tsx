@@ -2,9 +2,9 @@
 
 import Slink from "./Slink";
 import { useLocale } from "next-intl";
-import { usePathname } from "next/navigation";
 import { isLinkActive } from "@/lib/utils";
-
+import { usePathname } from "next/navigation";
+import { SidebarCloseButton } from "@/components/common";
 import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
 
 import {
@@ -18,6 +18,7 @@ import {
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
+	SidebarTrigger,
 } from "@/components/ui";
 
 // Menu items.
@@ -55,6 +56,7 @@ function PanelSidebar() {
 
 	return (
 		<Sidebar collapsible="icon" side={locale === "fa" ? "right" : "left"}>
+			<SidebarCloseButton />
 			<SidebarContent>
 				<SidebarGroup>
 					<SidebarGroupLabel>Application</SidebarGroupLabel>

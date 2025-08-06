@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { cn } from "@/lib/utils";
-import { MenuIcon } from "lucide-react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, VariantProps } from "class-variance-authority";
 
@@ -264,6 +263,7 @@ function Sidebar({
 function SidebarTrigger({
 	className,
 	onClick,
+	children,
 	...props
 }: React.ComponentProps<typeof Button>) {
 	const { toggleSidebar } = useSidebar();
@@ -279,8 +279,7 @@ function SidebarTrigger({
 				toggleSidebar();
 			}}
 			{...props}>
-			{/* <PanelLeftIcon /> */}
-			<MenuIcon className="size-6" />
+			{children}
 			<span className="sr-only">Toggle Sidebar</span>
 		</Button>
 	);
